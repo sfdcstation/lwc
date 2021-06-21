@@ -1,0 +1,39 @@
+We have defined three private attributes:  “numbertoConvert” which will store the value entered in lightning-input, “selectedOption” which will store the selected value from the drop down and “convertedValue” which will store the output.
+
+import { LightningElement } from 'lwc';
+export default class Gettersetter extends LightningElement {
+
+    numbertoconvert;
+    convertedValue;
+    selectedOption;
+We have defined one GET method “options()” which will return the list of options and display in the lighting-combobox base component.
+
+get options() {
+        return [
+            { label: '--None--', value: '' },
+            { label: 'Second', value: '1000' },
+            { label: 'Minute', value: '60000' },
+            { label: 'Hour', value: '3.6e+6' },
+            { label: 'Day', value: '8.64e+7' }
+        ];
+    }
+When the user enters a number in lightning-input, handleChange(event) function will invoke which will update the value entered on UI to numbertoConvert attribute.
+
+handleChange(event) {
+        this.numbertoconvert = event.detail.value;
+    }
+When the user selects the option from the dropdown , handleSelect(event) function will invoke which will save the selected value to selectedOption attribute.
+
+handleSelect(event) {
+        this.selectedOption = event.detail.value;
+    }
+Now when the user clicks the Convert button, handleClick() function will invoke where we have assigned the value to this.convert property based on the if-else condition.
+
+handleClick() {
+        this.convert = (this.selectedOption && this.numbertoconvert ? this.numbertoconvert * this.selectedOption : '');
+    }
+When the value is assigned to convert property the SET method “convert(val)” will be invoked automatically where we are assigning the passed parameter to the convertedValue attribute which will display on UI as output in milliseconds.
+
+set convert(val) {
+        this.convertedValue = val;
+    }
