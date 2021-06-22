@@ -15,6 +15,7 @@ export default class ImperativeExample1 extends LightningElement
         findContacts({ searchKey: this.searchKey })
             .then((result) => {
                 this.contacts = result;
+                console.log('&&&&'+this.contacts);
                 this.error = undefined;
             })
             .catch((error) => {
