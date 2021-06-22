@@ -1,6 +1,7 @@
 <template>
     <lightning-card title="ApexImperativeMethod" icon-name="custom:custom63">
         <div class="slds-m-around_medium">
+            <lightning-input placeholder="Enter Account Name" onchange={changeSearchText}></lightning-input>
             <p class="slds-m-bottom_small">
                 <lightning-button label="Search Contacts" onclick={handleLoad}></lightning-button>
             </p>
