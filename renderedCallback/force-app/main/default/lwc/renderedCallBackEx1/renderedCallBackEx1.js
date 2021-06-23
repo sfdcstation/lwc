@@ -1,16 +1,20 @@
-import { LightningElement } from 'lwc';
+import { LightningElement,track } from 'lwc';
 
 export default class RenderedCallBackEx1 extends LightningElement 
 {
 
-    properties;
+   properties;
+   hasRendered = true;
     renderedCallback() {
-        this.properties = 'set by renderedCallback';
-        console.log('properties ' + this.properties);
+        //guarding code inside the renderedCallback using boolean property
+        if (this.hasRendered) {
+            this.properties = 'set by renderedCallback';
+            console.log('properties ' + this.properties);
+            this.hasRendered = false;
+        }
     }
 
     handleButtonClick() {
         this.properties = 'set by buttonClick';
     }
-
 }
